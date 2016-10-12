@@ -1,1 +1,6 @@
 C:\Users\Roger och Stina\Source\Repos\Labb 1 - Klasser och Objekt\Labb 1 - Klasser och Objekt\bin\Debug\Labb 1 - Klasser och Objekt.exe.config
+C:\Users\Roger och Stina\Source\Repos\Labb 1 - Klasser och Objekt\Labb 1 - Klasser och Objekt\bin\Debug\Labb 1 - Klasser och Objekt.exe
+C:\Users\Roger och Stina\Source\Repos\Labb 1 - Klasser och Objekt\Labb 1 - Klasser och Objekt\bin\Debug\Labb 1 - Klasser och Objekt.pdb
+C:\Users\Roger och Stina\Source\Repos\Labb 1 - Klasser och Objekt\Labb 1 - Klasser och Objekt\obj\Debug\Labb 1 - Klasser och Objekt.csprojResolveAssemblyReference.cache
+C:\Users\Roger och Stina\Source\Repos\Labb 1 - Klasser och Objekt\Labb 1 - Klasser och Objekt\obj\Debug\Labb 1 - Klasser och Objekt.exe
+C:\Users\Roger och Stina\Source\Repos\Labb 1 - Klasser och Objekt\Labb 1 - Klasser och Objekt\obj\Debug\Labb 1 - Klasser och Objekt.pdb

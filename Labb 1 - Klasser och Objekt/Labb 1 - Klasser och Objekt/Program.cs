@@ -10,6 +10,8 @@ namespace Labb_1___Klasser_och_Objekt
     {
         static void Main(string[] args)
         {
+            var runtime = new Runtime();
+            runtime.Start();
         }
     }
 }
