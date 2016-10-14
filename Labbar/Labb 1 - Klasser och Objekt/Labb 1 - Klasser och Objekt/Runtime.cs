@@ -8,39 +8,53 @@ namespace Labb_1___Klasser_och_Objekt
 {
     class Runtime
     {
-        //Console.WriteLine("Name: ");
-        string name;
-
-        //Console.WriteLine("Age: ");
-        int age;
-
-        //Console.WriteLine("Breed: ");
-        string breed;
-
         public void Start()
         {
-            
-            Dog newDog = new Dog
+            #region Del 1
+            Dog dog1 = new Dog
             {
-                Name = name,
-                Age = age,
-                Breed = breed
+                Name = "Big Barry",
+                Age = 5,
+                Breed = "Big Dog"
             };
 
-            List<Dog> dogList = new List<Dog>()
+            Dog dog2 = new Dog
             {
-                new Dog { Name = "Big Joe", Age = 55, Breed = "Big Dog" },
-                new Dog { Name = "Lil' Mike", Age = 7, Breed = "Little Dog" },
-                new Dog { Name = "Katyusha", Age = 12, Breed = "Chernobyl Dog" }
+                Name = "Lil' Lulu",
+                Age = 9,
+                Breed = "Little dog"
             };
 
-            dogList.Add(new Dog { Name = "Fritz", Age = 12, Breed = "German" });
+            Console.WriteLine("Name: {0}, Age: {1}, Breed: {2}", dog1.Name, dog1.Age, dog1.Breed);
+            Console.WriteLine("Name: {0}, Age: {1}, Breed: {2}", dog2.Name, dog2.Age, dog2.Breed);
+            #endregion
+            DogManager dogManager = new DogManager();
 
-            foreach (var dog in dogList)
+            bool shouldRun = true;
+
+            while (shouldRun)
             {
-                Console.WriteLine(dog.DogInformation());
+                UserInterface.DisplayMainMenu();
+
+                Console.Write("Choose option: ");
+                int input = int.Parse(Console.ReadLine());
+
+                switch (input)
+                {
+                    case 1:
+                        dogManager.AddDog();
+                        break;
+                    case 2:
+                        dogManager.RemoveDog();
+                        break;
+                    case 3:
+                        dogManager.DisplayList();
+                        break;
+                    case 4:
+                        shouldRun = false;
+                        break;
+                }
             }
-            Console.ReadKey();
         }
     }
 }
