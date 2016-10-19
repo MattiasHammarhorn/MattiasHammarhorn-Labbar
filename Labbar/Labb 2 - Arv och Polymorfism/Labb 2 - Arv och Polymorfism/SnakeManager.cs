@@ -18,7 +18,7 @@ namespace Labb_2___Arv_och_Polymorfism
                     Weight = 13, WarmBlooded = "not warm blooded", Length = 13 },
                 new Snake { Name = "Cocobra", Age = 15, Move = "slithering across the ground", Sound = "hissing",
                     Weight = 5, WarmBlooded = "not warm blooded", Length = 5 },
-                new Snake { Name = "Bowowa", Age = 24, Move = "slithering across the ground", Sound = "hissing",
+                new Snake { Name = "Hancock Boa", Age = 24, Move = "slithering across the ground", Sound = "hissing",
                     Weight = 9, WarmBlooded = "not warm blooded", Length = 4 }
             };
         }
@@ -53,7 +53,7 @@ namespace Labb_2___Arv_och_Polymorfism
 
         public void RemoveSnake()
         {
-            for (int i = 0; i <= snakeList.Count; i++)
+            for (int i = 1; i <= snakeList.Count; i++)
             {
                 Console.WriteLine("{0}. {1}", i, snakeList[i - 1].Name);
             }
@@ -68,7 +68,7 @@ namespace Labb_2___Arv_och_Polymorfism
         {
             foreach (var snake in snakeList)
             {
-                Console.WriteLine("{0}. {1}", snake.Name, snake.Introduction());
+                Console.WriteLine("{0}: \n\n{1}\n", snake.Name, snake.Introduction());
             }
         }
     }

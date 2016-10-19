@@ -64,7 +64,7 @@ namespace Labb_2___Arv_och_Polymorfism
         {
             foreach (var penguin in penguinList)
             {
-                Console.WriteLine("{0}. {1}", penguin.Name, penguin.Introduction());
+                Console.WriteLine("{0}: \n\n{1}\n", penguin.Name, penguin.Introduction());
             }
         }
     }

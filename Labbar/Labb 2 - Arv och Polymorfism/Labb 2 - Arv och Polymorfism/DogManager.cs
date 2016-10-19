@@ -66,7 +66,7 @@ namespace Labb_2___Arv_och_Polymorfism
         {
             foreach (var dog in dogList)
             {
-                Console.WriteLine("{0}. {1}", dog.Name, dog.Introduction());
+                Console.WriteLine("{0}: \n\n{1}\n", dog.Name, dog.Introduction());
             }
         }
     }

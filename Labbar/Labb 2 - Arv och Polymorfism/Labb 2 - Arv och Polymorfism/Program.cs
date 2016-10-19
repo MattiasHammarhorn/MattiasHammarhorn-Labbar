@@ -12,7 +12,6 @@ namespace Labb_2___Arv_och_Polymorfism
         {
             var runtime = new Runtime();
             runtime.Start();
-            Console.ReadKey();
         }
     }
 }
