@@ -43,20 +43,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Animal.cs" />
-    <Compile Include="Bird.cs" />
-    <Compile Include="Dog.cs" />
-    <Compile Include="DogManager.cs" />
-    <Compile Include="Mammal.cs" />
+    <Compile Include="Animal\Animal.cs" />
+    <Compile Include="Animal\Bird\Bird.cs" />
+    <Compile Include="Animal\Mammals\Dog\Dog.cs" />
+    <Compile Include="Animal\Mammals\Dog\DogManager.cs" />
+    <Compile Include="Animal\Mammals\Mammal.cs" />
     <Compile Include="Menu.cs" />
-    <Compile Include="Penguin.cs" />
-    <Compile Include="PenguinManager.cs" />
+    <Compile Include="Animal\Bird\Penguin\Penguin.cs" />
+    <Compile Include="Animal\Bird\Penguin\PenguinManager.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Reptile.cs" />
+    <Compile Include="Animal\Reptile\Reptile.cs" />
     <Compile Include="Runtime.cs" />
-    <Compile Include="Snake.cs" />
-    <Compile Include="SnakeManager.cs" />
+    <Compile Include="Animal\Reptile\Snake\Snake.cs" />
+    <Compile Include="Animal\Reptile\Snake\SnakeManager.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

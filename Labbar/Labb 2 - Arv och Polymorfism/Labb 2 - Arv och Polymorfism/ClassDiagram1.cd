@@ -4,49 +4,49 @@
     <Position X="5.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAIAAAAAAAEAAAAQAACAAAAAABAAAAAAEAAA=</HashCode>
-      <FileName>Animal.cs</FileName>
+      <FileName>Animal\Animal.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Labb_2___Arv_och_Polymorfism.Mammal">
     <Position X="3" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Mammal.cs</FileName>
+      <FileName>Animal\Mammals\Mammal.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Labb_2___Arv_och_Polymorfism.Reptile">
     <Position X="5.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Reptile.cs</FileName>
+      <FileName>Animal\Reptile\Reptile.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Labb_2___Arv_och_Polymorfism.Bird">
     <Position X="7.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAA=</HashCode>
-      <FileName>Bird.cs</FileName>
+      <FileName>Animal\Bird\Bird.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Labb_2___Arv_och_Polymorfism.Dog">
     <Position X="3" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Dog.cs</FileName>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Animal\Mammals\Dog\Dog.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Labb_2___Arv_och_Polymorfism.Snake">
     <Position X="5.25" Y="5.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Snake.cs</FileName>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>Animal\Reptile\Snake\Snake.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Labb_2___Arv_och_Polymorfism.Penguin">
     <Position X="7.5" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
-      <FileName>Penguin.cs</FileName>
+      <FileName>Animal\Bird\Penguin\Penguin.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
