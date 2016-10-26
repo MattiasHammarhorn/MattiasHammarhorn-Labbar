@@ -12,6 +12,8 @@ namespace Labb_3___Biljettbokning
         public string TicketType { get; set; }
         public List<Event> Tickets { get; set; }
 
+
+        //constructor for each ticket to include a list of events
         public Ticket()
         {
             Tickets = new List<Event>();

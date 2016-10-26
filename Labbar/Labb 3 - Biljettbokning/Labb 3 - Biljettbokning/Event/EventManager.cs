@@ -8,6 +8,7 @@ namespace Labb_3___Biljettbokning
 {
     class EventManager
     {
+        //make list properties out of our events
         public List<Concert> concertList { get; set; }
         public List<Film> filmList { get; set; }
         public List<Festival> festivalList { get; set; }
@@ -15,6 +16,7 @@ namespace Labb_3___Biljettbokning
 
         public EventManager()
         {
+            //new lists of all events
             concertList = new List<Concert>()
             {
                 new Concert { Name = "Concert 1", ArtistName = "Artist 1", Date = "Date 1", Location = "Place 1", MusicGenre = "Genre 1" },
@@ -38,6 +40,7 @@ namespace Labb_3___Biljettbokning
             };
         }
 
+        //displays a list of concerts
         public void DisplayConcerts()
         {
             foreach (var concert in concertList)
@@ -48,6 +51,7 @@ namespace Labb_3___Biljettbokning
             Console.ReadKey();
         }
 
+        //displays a list of films
         public void DisplayFilms()
         {
             foreach (var film in filmList)
@@ -59,6 +63,7 @@ namespace Labb_3___Biljettbokning
             Console.ReadKey();
         }
 
+        //displays a list of festivals
         public void DisplayFestivals()
         {
             foreach (var festival in festivalList)

@@ -8,6 +8,7 @@ namespace Labb_3___Biljettbokning
 {
     class Menus
     {
+        //graphic for menus
         public static void DisplayMenu()
         {
             Console.WriteLine("1. See upcoming events");
