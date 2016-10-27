@@ -13,7 +13,6 @@ namespace Labb_3___Biljettbokning
             //start instance of runtime instead of running it in program
             Runtime runtime = new Runtime();
             runtime.Start();
-            Console.ReadKey();
         }
     }
 }

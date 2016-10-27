@@ -19,6 +19,7 @@ namespace Labb_3___Biljettbokning
 
         public static void DisplayEvent()
         {
+            Console.Clear();
             Console.WriteLine("1. See upcoming concerts");
             Console.WriteLine("2. See upcoming films");
             Console.WriteLine("3. See upcoming festivals");
@@ -27,6 +28,7 @@ namespace Labb_3___Biljettbokning
 
         public static void DisplayBooking()
         {
+            Console.Clear();
             Console.WriteLine("1. Book concert");
             Console.WriteLine("2. Book film");
             Console.WriteLine("3. Book festival");

@@ -11,6 +11,7 @@ namespace Labb_3___Biljettbokning
         public string Name { get; set; }
         public string Date { get; set; }
         public string Location { get; set; }
+        public int bookingIndex { get; set; }
 
         //an empty string that may be inherited for the use of displaying info about each events' properties
         //it may also be overwritten so that each event can show its own property

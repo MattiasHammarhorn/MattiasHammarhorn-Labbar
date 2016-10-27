@@ -13,7 +13,7 @@ namespace Labb_3___Biljettbokning
         //overrides informaton with the events unique properties
         public override string Information()
         {
-            return String.Format("{0}: {1}\t{2}\t{3}\t{4}", Name, Date, Location, FilmGenre, Length);
+            return String.Format("{0}. {1}:\n Date: {2}\tLocation: {3}\tGenre: {4}\tLength: {5}", bookingIndex, Name, Date, Location, FilmGenre, Length);
         }
     }
 }

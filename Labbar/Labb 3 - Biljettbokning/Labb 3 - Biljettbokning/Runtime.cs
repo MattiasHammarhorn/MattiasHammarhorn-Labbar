@@ -11,7 +11,7 @@ namespace Labb_3___Biljettbokning
         public void Start()
         {
             EventManager eventManager = new EventManager();
-            Ticket ticket = new Ticket();
+            TicketManager ticketManager = new TicketManager();
 
             bool isProgramRunning = true;
 
@@ -68,11 +68,6 @@ namespace Labb_3___Biljettbokning
                         {
                             int inputBooking = int.Parse(Console.ReadLine());
 
-                            //currently, the switch only has options to showcase each list of events
-                            //i have no idea how to implement an index-based "menu"
-                            //the PLAN is to make sure that i can use an "input" that is integer based with readline.
-                            //the input is gonna correspond with the number of event
-                            //the event is gonna be taken in to the "Tickets"-list.
                             switch (inputBooking)
                             {
                                 case 1:
@@ -80,27 +75,48 @@ namespace Labb_3___Biljettbokning
                                     Console.WriteLine("Choose concert: ");
                                     eventManager.DisplayConcerts();
 
-                                    //the PLAN is to make sure that i can use an "input" that is integer based with readline.
-                                    //the input is gonna correspond with the number of event
-                                    //the event is gonna be taken in to the "Tickets"-list.
+                                    int bookingChoice1 = int.Parse(Console.ReadLine());
+
+                                    //if the input is the same as the index of an item inside he list,
+                                    //then a concert will be returned into the variable 'concertToBook'
+                                    var concertToBook = eventManager.concertList.SingleOrDefault(concert => concert.bookingIndex == bookingChoice1);
+
+                                    //aslong as concertToBook has an existing concert inside it, then it will go to a method
+                                    //otherwise it crashes
+                                    if (concertToBook != null)
+                                    {
+                                        ticketManager.AddConcertTicket();
+                                    }
+
                                     isBookingRunning = false;
                                     break;
                                 case 2:
                                     Console.WriteLine("Choose film: ");
                                     eventManager.DisplayFilms();
+                                    string test = Console.ReadLine();
+                                    int bookingChoice2 = int.Parse(test);
 
-                                    //the PLAN is to make sure that i can use an "input" that is integer based with readline.
-                                    //the input is gonna correspond with the number of event
-                                    //the event is gonna be taken in to the "Tickets"-list.
+                                    //var eventToBook = eventManager.concertList[bookingChoice];
+                                    var filmToBook = eventManager.filmList.SingleOrDefault(film => film.bookingIndex == bookingChoice2);
+                                    if (filmToBook != null)
+                                    {
+                                        ticketManager.AddFilmTicket();
+                                    }
+
                                     isBookingRunning = false;
                                     break;
                                 case 3:
                                     Console.WriteLine("Choose festival: ");
                                     eventManager.DisplayFestivals();
 
-                                    //the PLAN is to make sure that i can use an "input" that is integer based with readline.
-                                    //the input is gonna correspond with the number of event
-                                    //the event is gonna be taken in to the "Tickets"-list.
+                                    int bookingChoice3 = int.Parse(Console.ReadLine());
+
+                                    var festivalToBook = eventManager.festivalList.SingleOrDefault(festival => festival.bookingIndex == bookingChoice3);
+                                    if (festivalToBook != null)
+                                    {
+                                        ticketManager.AddFestivalTicket();
+                                    }
+
                                     isBookingRunning = false;
                                     break;
                                 case 4:
@@ -111,7 +127,7 @@ namespace Labb_3___Biljettbokning
 
                         break;
                     case 3:
-
+                        ticketManager.DisplayAllTickets();
                         break;
                     case 4:
                         isProgramRunning = false;

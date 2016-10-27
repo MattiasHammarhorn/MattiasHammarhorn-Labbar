@@ -19,24 +19,34 @@ namespace Labb_3___Biljettbokning
             //new lists of all events
             concertList = new List<Concert>()
             {
-                new Concert { Name = "Concert 1", ArtistName = "Artist 1", Date = "Date 1", Location = "Place 1", MusicGenre = "Genre 1" },
-                new Concert { Name = "Concert 2", ArtistName = "Artist 2", Date = "Date 2", Location = "Place 2", MusicGenre = "Genre 2" },
-                new Concert { Name = "Concert 3", ArtistName = "Artist 3", Date = "Date 3", Location = "Place 3", MusicGenre = "Genre 3" },
-                new Concert { Name = "Concert 4", ArtistName = "Artist 4", Date = "Date 4", Location = "Place 4", MusicGenre = "Genre 4" }
+                new Concert { Name = "Slayer Live Evil", ArtistName = "Slayer",
+                    Date = "12/09", Location = "Fryshuset", MusicGenre = "heavy metal", bookingIndex = 1 },
+                new Concert { Name = "Deep Purple Live at Gröna Lund", ArtistName = "Deep Purple",
+                    Date = "5/9", Location = "Gröna Lund", MusicGenre = "hard rock", bookingIndex = 2 },
+                new Concert { Name = "MomoClo LIVE at Ericsson", ArtistName = "Momoiro Clover Z",
+                    Date = "12/21", Location = "Ericsson Globe", MusicGenre = "j-pop", bookingIndex = 3 },
+                new Concert { Name = "L'Arc-en-Ciel LIVE", ArtistName = "L'Arc-en-Ciel",
+                    Date = "11/09", Location = "Satsuma Stadium", MusicGenre = "alternative rock", bookingIndex = 4 }
             };
 
             filmList = new List<Film>()
             {
-                new Film { Name = "Film 1", Date = "Date 1", FilmGenre = "Genre 1", Length = "Length 1", Location = "Cinema 1"},
-                new Film { Name = "Film 2", Date = "Date 2", FilmGenre = "Genre 2", Length = "Length 2", Location = "Cinema 2"},
-                new Film { Name = "Film 3", Date = "Date 3", FilmGenre = "Genre 3", Length = "Length 3", Location = "Cinema 3"},
+                new Film { Name = "The Line between Good and Bad", Date = "30/01", FilmGenre = "Psychological, War",
+                    Length = "89 min", Location = "Sergels Bio", bookingIndex = 1},
+                new Film { Name = "Nazi Supermutant Zombies vs Comrading Comrads", Date = "28/02", FilmGenre = "Generic Slasher, horror",
+                    Length = "120 min", Location = "Heron City", bookingIndex = 2},
+                new Film { Name = "Saving Ryan's Privates", Date = "30/05", FilmGenre = "Comedy, Satire, War",
+                    Length = "69 min", Location = "Filmstaden Söder", bookingIndex = 3},
             };
 
             festivalList = new List<Festival>()
             {
-                new Festival {Name = "Festival 1", FestivalType = "Type 1", Date = "Date 1", Location = "Location 1"},
-                new Festival {Name = "Festival 2", FestivalType = "Type 2", Date = "Date 2", Location = "Location 2"},
-                new Festival {Name = "Festival 3", FestivalType = "Type 3", Date = "Date 3", Location = "Location 3"},
+                new Festival {Name = "Sweden Rock", FestivalType = "hard rock festival",
+                    Date = "8/07", Location = "Somewhere too damn far down Sweden", bookingIndex = 1},
+                new Festival {Name = "Stockholm Kulturfestival", FestivalType = "culture festival",
+                    Date = "25/08", Location = "Gärdet", bookingIndex = 2},
+                new Festival {Name = "Sokoku Festivalen", FestivalType = "culture festival",
+                    Date = "21/12", Location = "Stockholm City", bookingIndex = 3},
             };
         }
 
@@ -45,10 +55,8 @@ namespace Labb_3___Biljettbokning
         {
             foreach (var concert in concertList)
             {
-                Console.WriteLine("{0}:\n{1}", concert.Name, concert.Information());
+                Console.WriteLine("{0}", concert.Information());
             }
-
-            Console.ReadKey();
         }
 
         //displays a list of films
@@ -59,8 +67,6 @@ namespace Labb_3___Biljettbokning
                 Console.WriteLine(film.Information());
 
             }
-
-            Console.ReadKey();
         }
 
         //displays a list of festivals
@@ -71,8 +77,6 @@ namespace Labb_3___Biljettbokning
                 Console.WriteLine(festival.Information());
 
             }
-
-            Console.ReadKey();
         }
     }
 }
