@@ -18,7 +18,8 @@ namespace Labb_6___Console_Adventure.Classes
             {
                 new Human { Name = "Eric Fairfax",
                             Response = "Huh? What you wan', bruv? Can't you see I'm busy!",
-                            Appearance = "A young man in his pre-teens, clad in baggy trousers and a sport jacket." },
+                            Appearance = "A young man in his pre-teens, clad in baggy trousers and a sport jacket.",
+                            QuestDialogue = "Huh? You talked to me mom? You gonna help us? That's mighty decent of ya.\nGo to town and see if you can find a ladder or something.\nI'll stay here and make sure Nibbles don't fall and breaks his feet!" },
                 new Animal { Name = "Mr.Nibbles",
                             Response = "Meow!",
                             Appearance = "A black cat stuck in a tree." }
@@ -52,8 +53,24 @@ namespace Labb_6___Console_Adventure.Classes
             Console.WriteLine("Choose object: ");
             int index = int.Parse(Console.ReadLine());
 
-            //Anropar properties från npcs och ser till att indexen blir detsamma som positionerna i for-loopen
-            Console.WriteLine("{0}: {1}", nonPlayerCharacters[index - 1].Name, nonPlayerCharacters[index - 1].Response);
+            if (QuestManager.isQuestStarted == false)
+            {
+                //Anropar properties från npcs och ser till att indexen blir detsamma som positionerna i for-loopen
+                Console.WriteLine("{0}: {1}", nonPlayerCharacters[index - 1].Name, nonPlayerCharacters[index - 1].Response);
+            }
+
+            else if (QuestManager.isQuestStarted == true && QuestManager.isLadderTaken == true)
+            {
+                //Anropar questproperties från npcs ifall questet har börjat
+                Console.WriteLine("{0}: Oi, ya found it? Bloody good job mate! Now let's get Mr.Nibbles down...", nonPlayerCharacters[0].Name);
+                QuestManager.QuestEnd();
+            }
+
+            else
+            {
+                //Anropar questproperties från npcs ifall questet har börjat
+                Console.WriteLine("{0}: {1}", nonPlayerCharacters[index - 1].Name, nonPlayerCharacters[index - 1].QuestDialogue);
+            }
         }
 
         public void EnterYard()

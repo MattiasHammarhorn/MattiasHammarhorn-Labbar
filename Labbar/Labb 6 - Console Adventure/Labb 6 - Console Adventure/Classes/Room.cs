@@ -17,8 +17,9 @@ namespace Labb_6___Console_Adventure.Classes
             //Gör en lista av NPC och tilldelar värden till deras properties
             nonPlayerCharacters = new List<INonPlayerCharacter>()
             {
-                new Human { Name = "Old woman",
-                            Response = "O hello there, come to chat with an old woman like meself?",
+                new Human { Name = "Mss.Fairfax",
+                            Response = "Well, off you go!",
+                            QuestDialogue = "Say, would you do an' old woman a favour?\nMe name's Greta Fairfax and I live with me good-for-nothing son, Eric.\nHe's out there in the yard tryin' to get me cat, Mr.Nibbles, down from the tree in me garden.\nMr.Nibbles' been stuck up there all day and won't come down!\nWould you please help me?\nGo talk to Eric and see what you can do!",
                             Appearance = "an old woman" }
             };
         }
@@ -50,8 +51,24 @@ namespace Labb_6___Console_Adventure.Classes
             Console.WriteLine("Choose object: ");
             int index = int.Parse(Console.ReadLine());
 
-            //Anropar properties från npcs och ser till att indexen blir detsamma som positionerna i for-loopen
-            Console.WriteLine("{0}: {1}", nonPlayerCharacters[index - 1].Name, nonPlayerCharacters[index - 1].Response);
+            if (QuestManager.isQuestStarted == false)
+            {
+                //Anropar properties från npcs och ser till att indexen blir detsamma som positionerna i for-loopen
+                Console.WriteLine("{0}: {1}", nonPlayerCharacters[index - 1].Name, nonPlayerCharacters[index - 1].QuestDialogue);
+                QuestManager.isQuestStarted = true;
+            }
+
+            else if (QuestManager.isQuestStarted == true && QuestManager.isLadderTaken == true)
+            {
+                //Anropar questproperties från npcs ifall questet har börjat
+                Console.WriteLine("{0}: Oh you found a ladder! Splendid! Just splendid!", nonPlayerCharacters[index - 1].Name);
+                QuestManager.QuestEnd();
+            }
+
+            else
+            {
+                Console.WriteLine("{0}: {1}", nonPlayerCharacters[index - 1].Name, nonPlayerCharacters[index - 1].Response);
+            }
         }
 
         public void EnterRoom()

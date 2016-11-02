@@ -9,12 +9,17 @@ namespace Labb_6___Console_Adventure
 {
     class Runtime
     {
+        QuestManager questManager = new QuestManager();
+
         public void Start()
         {
 
+            QuestManager.isQuestStarted = false;
+            QuestManager.isLadderTaken = false;
+
             //Anropar en metod för grafik
             bool isGameRunning = true;
-
+            
             while(isGameRunning)
             {
                 Menus.DisplayMainMenu();
@@ -42,9 +47,12 @@ namespace Labb_6___Console_Adventure
             Yard yard = new Yard();
             Townsquare townsquare = new Townsquare();
 
+            //Skriver ut intro
+            QuestManager.QuestMonologue();
+
             bool GameLoop = true;
 
-            while(GameLoop)
+            while (GameLoop)
             {
                 Menus.AreaMenu();
                 var input = Console.ReadKey(true).Key;

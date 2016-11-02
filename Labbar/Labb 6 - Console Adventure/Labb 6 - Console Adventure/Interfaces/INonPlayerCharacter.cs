@@ -11,6 +11,7 @@ namespace Labb_6___Console_Adventure.Interfaces
     {
         string Name { get; set; }
         string Response { get; set; }
+        string QuestDialogue { get; set; }
         string Appearance { get; set; }
         string Speak();
         string Observe();

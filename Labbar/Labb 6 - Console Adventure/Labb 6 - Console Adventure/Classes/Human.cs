@@ -12,6 +12,7 @@ namespace Labb_6___Console_Adventure.Classes
         //Ger klassen properties och metoder från interfacet
         public string Name { get; set; }
         public string Response { get; set; }
+        public virtual string QuestDialogue { get; set; }
         public string Appearance { get; set; }
 
         //Metoder som returnerar properties
