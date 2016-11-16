@@ -10,6 +10,6 @@ namespace Labb_9___TicTacToe.Interfaces
     {
         Node[,] Grid { get; set; }
 
-        void PlaceMarker(int row, int col, int player);
+        void PlaceMarker();
     }
 }

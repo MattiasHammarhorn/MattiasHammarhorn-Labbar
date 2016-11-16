@@ -12,7 +12,6 @@ namespace Labb_9___TicTacToe
         {
             var gameManager = new GameManager();
             gameManager.Start();
-            Console.ReadKey();
         }
     }
 }
