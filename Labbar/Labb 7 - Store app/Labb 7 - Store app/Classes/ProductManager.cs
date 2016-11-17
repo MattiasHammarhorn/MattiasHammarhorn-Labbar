@@ -12,7 +12,10 @@ namespace Labb_7___Store_app.Classes
         public List<Electronics> electronics { get; set; }
         public List<Food> food { get; set; }
         public List<Toys> toys { get; set; }
+        public List<Product> boughtProducts { get; set; }
 
+        // Konstruktor
+        #region Constructor
         public ProductManager()
         {
             //Skapar hårdkodade listor utav produkter
@@ -44,9 +47,9 @@ namespace Labb_7___Store_app.Classes
 
             toys = new List<Toys>
             {
-                new Toys { ProductName = "Jar Jar Binks figure",
+                new Toys { ProductName = "Jar Jar Binks figurine",
                             Price = 30,
-                            ProductInformation = "A plastic figurine of the character Jar Jar Binks from the popular 'Star Wars' franchise." },
+                            ProductInformation = "A plastic figurine of everyone's favorite Star Wars character." },
                 new Toys { ProductName = "Light Saber",
                             Price = 34000,
                             ProductInformation = "A deadly light saber that has probably been misplaced. Someone should probably get rid of it before anyone is hurt..." },
@@ -55,7 +58,9 @@ namespace Labb_7___Store_app.Classes
                             ProductInformation = "A toy miniature version of the famous T34-tank model used by the Soviet Union from 1940-58." }
             };
         }
+        #endregion
 
+        #region Adding methods
         public void AddElectronic()
         {
             Electronics newElectronics = new Electronics();
@@ -103,7 +108,9 @@ namespace Labb_7___Store_app.Classes
 
             toys.Add(newToys);
         }
+        #endregion
 
+        #region Removing methods
         public void RemoveElectronic()
         {
             for (int i = 1; i <= electronics.Count; i++)
@@ -142,7 +149,9 @@ namespace Labb_7___Store_app.Classes
 
             toys.RemoveAt(index - 1);
         }
+        #endregion
 
+        #region Displaying methods
         public void DisplayElectronics()
         {
             for (int i = 1; i <= electronics.Count; i++)
@@ -175,5 +184,6 @@ namespace Labb_7___Store_app.Classes
 
             Console.ReadKey(true);
         }
+        #endregion
     }
 }

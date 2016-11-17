@@ -11,7 +11,7 @@ namespace Labb_7___Store_app
         public static void DisplayMainMenu()
         {
             Console.Clear();
-            Console.WriteLine("1. Browse wares");
+            Console.WriteLine("1. Display wares");
             Console.WriteLine("2. Remove Wares");
             Console.WriteLine("3. Add Wares");
             Console.WriteLine("4. Exit");
