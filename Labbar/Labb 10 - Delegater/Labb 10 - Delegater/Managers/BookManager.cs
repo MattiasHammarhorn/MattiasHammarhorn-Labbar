@@ -28,10 +28,9 @@ namespace Labb_10___Delegater.Managers
             {
                 if (filter(book))
                 {
-                    Console.WriteLine(book.Title);
-                    Console.WriteLine(book.Genre);
-                    Console.WriteLine(book.Price);
-                    Console.WriteLine(book.Pages);
+                    Console.WriteLine("This book's title is: {0}", book.Title);
+                    Console.WriteLine("This book's genre is: {0}", book.Genre);
+                    Console.WriteLine("This book is {0} pages long", book.Pages);
                 }
             }
         }
