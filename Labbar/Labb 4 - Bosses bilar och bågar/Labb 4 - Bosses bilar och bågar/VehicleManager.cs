@@ -11,8 +11,10 @@ namespace Labb_4___Bosses_bilar_och_bågar
         public List<Car> cars { get; set; }
         public List<Motorbike> motorbikes { get; set; }
         public List<Fordon> fordon { get; set; }
+        public List<Car> buyableCars { get; set; }
+        public List<Motorbike> buyableMotorbikes { get; set; }
 
-        public VehicleManager()
+        public VehicleManager() // Konstruktor där vi instansierar objekt i listorna
         {
             cars = new List<Car>
             {
@@ -32,7 +34,23 @@ namespace Labb_4___Bosses_bilar_och_bågar
                 new Motorbike { Manufacturer = "BMW", Model = "R 1200", Price = 147250, IsUsed = false },
                 new Motorbike { Manufacturer = "Suzuki", Model = "Gladius 650", Price = 53900, IsUsed = false }
             };
-            fordon = new List<Fordon>();
+
+            // Nya listor för att kunna köpa av
+            buyableCars = new List<Car>
+            {
+                new Car { Manufacturer = "Manufacturer 1", Model = "Model 1", Price = 777, IsUsed = true },
+                new Car { Manufacturer = "Manufacturer 2", Model = "Model 2", Price= 666, IsUsed = false },
+                new Car { Manufacturer = "Manufacturer 1", Model = "Model 1.1", Price= 777, IsUsed = true },
+                new Car { Manufacturer = "Manufacturer 2", Model = "Model 2.1", Price= 666, IsUsed = false }
+            };
+
+            buyableMotorbikes = new List<Motorbike>
+            {
+                new Motorbike { Manufacturer = "Manufacturer 1", Model = "Model 1", Price = 777, IsUsed = true },
+                new Motorbike { Manufacturer = "Manufacturer 2", Model = "Model 2", Price = 666, IsUsed = false },
+                new Motorbike { Manufacturer = "Manufacturer 1", Model = "Model 1.1", Price = 777, IsUsed = true },
+                new Motorbike { Manufacturer = "Manufacturer 2", Model = "Model 2.1", Price = 666, IsUsed = false }
+            };
         }
 
         #region Vehicle Displaying methods
@@ -51,48 +69,75 @@ namespace Labb_4___Bosses_bilar_och_bågar
                     case ConsoleKey.D1:
                     case ConsoleKey.NumPad1:
                         Console.Clear();
-                        ShowVehicles();
+                        ShowCars(); ;
                         isChoice = false;
                         break;
                     case ConsoleKey.D2:
                     case ConsoleKey.NumPad2:
                         Console.Clear();
-                        ShowCars();
+                        ShowMotorbikes();
                         isChoice = false;
                         break;
                     case ConsoleKey.D3:
                     case ConsoleKey.NumPad3:
                         Console.Clear();
-                        ShowMotorbikes();
+                        FilterChoice();
                         isChoice = false;
                         break;
                     case ConsoleKey.D4:
                     case ConsoleKey.NumPad4:
-                        Console.Clear();
-                        FilterMotorbikes();
-                        isChoice = false;
-                        break;
-                    case ConsoleKey.D5:
-                    case ConsoleKey.NumPad5:
                         isChoice = false;
                         break;
                 }
             }
         }
-        internal void ShowVehicles()    //Fungerar ej
-        {
-            for (int i = 1; i <= fordon.Count; i++)
-            {
-                Console.WriteLine("{0}. {1}", i, fordon[i - 1].VehicleInfo());
-            }
 
-            Console.WriteLine("Press any key to continue...");
-            Console.ReadKey();
+        #region Filter menu
+        internal void FilterChoice()
+        {
+            Console.Clear();
+            Menu.FilterVehicles();
+
+            bool isChoice = true;
+            var input = Console.ReadKey(true).Key;
+
+            while (isChoice)
+            {
+                switch (input)
+                {
+                    case ConsoleKey.D1:
+                    case ConsoleKey.NumPad1:
+                        FilterCars();
+                        isChoice = false;
+                        break;
+                    case ConsoleKey.D2:
+                    case ConsoleKey.NumPad2:
+                        FilterMotorbikes();
+                        isChoice = false;
+                        break;
+                    case ConsoleKey.D3:
+                    case ConsoleKey.NumPad3:
+                        isChoice = false;
+                        break;
+                }
+            }
         }
+        #endregion // Filtrerings meny
+
+        //internal void ShowVehicles()    //Fungerar ej
+        //{
+        //    for (int i = 1; i <= fordon.Count; i++)
+        //    {
+        //        Console.WriteLine("{0}. {1}", i, fordon[i - 1].VehicleInfo());
+        //    }
+
+        //    Console.WriteLine("Press any key to continue...");
+        //    Console.ReadKey();
+        //}
 
         internal void ShowCars()
         {
-            for (int i = 1; i <= cars.Count; i++)
+            for (int i = 1; i <= cars.Count; i++)   // Skriver ut information av alla fordon i listan
             {
                 Console.WriteLine("{0}. {1}", i, cars[i - 1].VehicleInfo());
             }
@@ -102,7 +147,7 @@ namespace Labb_4___Bosses_bilar_och_bågar
 
         internal void ShowMotorbikes()
         {
-            for (int i = 1; i <= motorbikes.Count; i++)
+            for (int i = 1; i <= motorbikes.Count; i++) // Skriver ut information av alla fordon i listan
             {
                 Console.WriteLine("{0}. {1}", i, motorbikes[i - 1].VehicleInfo());
             }
@@ -110,10 +155,30 @@ namespace Labb_4___Bosses_bilar_och_bågar
             Console.ReadKey();
         }
 
+        internal void FilterCars() //Val att bara visa specifika biltillverkare
+        {
+            Console.WriteLine("Enter manufacturer: ");
+            string input = Console.ReadLine();
+
+            Car[] subset = cars
+                .Where(cars => cars.Manufacturer.Contains(input))
+                .ToArray();
+
+            foreach (var car in subset)
+            {
+                Console.WriteLine("{0}", car.VehicleInfo()); //Fungerar ej!
+            }
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
+        }
+
         internal void FilterMotorbikes() //Val att bara visa specifika biltillverkare
         {
-            Fordon[] subset = motorbikes
-                .Where(motorbikes => motorbikes.IsUsed= false)
+            Console.WriteLine("Enter manufacturer: ");
+            string input = Console.ReadLine();
+
+            Motorbike[] subset = motorbikes
+                .Where(motorbikes => motorbikes.Manufacturer.Contains(input))
                 .ToArray();
 
             foreach (var motorbike in subset)
@@ -134,9 +199,9 @@ namespace Labb_4___Bosses_bilar_och_bågar
             bool isChoice = true;
             var input = Console.ReadKey(true).Key;
 
-            while(isChoice)
+            while (isChoice)
             {
-                switch(input)
+                switch (input)
                 {
                     case ConsoleKey.D1:
                     case ConsoleKey.NumPad1:
@@ -255,6 +320,233 @@ namespace Labb_4___Bosses_bilar_och_bågar
             int index = int.Parse(Console.ReadLine());
 
             motorbikes.RemoveAt(index - 1);
+        }
+        #endregion
+
+        #region Browsing mechanic
+
+        internal void BrowsingOptions()
+        {
+            bool isChoice = true;
+
+            while(isChoice)
+            {
+                Console.Clear();
+                Menu.BrowseVehicles();
+                var input = Console.ReadKey(true).Key;
+
+                switch (input)
+                {
+                    case ConsoleKey.D1:
+                    case ConsoleKey.NumPad1:
+                        BrowseCars();
+                        isChoice = false;
+                        break;
+                    case ConsoleKey.D2:
+                    case ConsoleKey.NumPad2:
+                        BrowseMotorbikes();
+                        isChoice = false;
+                        break;
+                    case ConsoleKey.D3:
+                    case ConsoleKey.NumPad3:
+                        BrowseUsedCars();
+                        isChoice = false;
+                        break;
+                    case ConsoleKey.D4:
+                    case ConsoleKey.NumPad4:
+                        BrowseUsedMotorbikes();
+                        isChoice = false;
+                        break;
+                    case ConsoleKey.D5:
+                    case ConsoleKey.NumPad5:
+                        isChoice = false;
+                        break;
+                }
+            }
+        }
+
+        internal void BrowseCars()
+        {
+            Console.WriteLine("Buyable cars:");
+
+            for (int i = 1; i < buyableCars.Count; i++)
+            {
+                Console.WriteLine("{0}. {1}", i, buyableCars[i - 1].VehicleInfo());
+            }
+
+            Console.WriteLine("Choice: ");
+            int index = int.Parse(Console.ReadLine());
+
+            cars.Add(buyableCars[index - 1]);
+            buyableCars.Remove(buyableCars[index - 1]);
+
+        }
+
+        internal void BrowseUsedCars() // Letar efter cars i buyableCars-listan vars isUsed bool är true.
+        {
+            Console.WriteLine("Buyable cars:");
+            Car[] subset = buyableCars.
+                Where(buyableCars => buyableCars.IsUsed == true)
+                .ToArray();
+
+            for (int i = 1; i < subset.Length; i++)
+            {
+                Console.WriteLine("{0}. {1}", i, buyableCars[i - 1].VehicleInfo());
+            }
+
+            Console.WriteLine("Choice: ");
+            int index = int.Parse(Console.ReadLine());
+
+            cars.Add(buyableCars[index - 1]);
+            buyableCars.Remove(buyableCars[index - 1]);
+
+        }
+
+        internal void BrowseMotorbikes()
+        {
+            Console.WriteLine("Buyable motorbikes:");
+
+            for (int i = 1; i < buyableMotorbikes.Count; i++)
+            {
+                Console.WriteLine("{0}. {1}", i, buyableMotorbikes[i - 1].VehicleInfo());
+            }
+
+            Console.WriteLine("Choice: ");
+            int index = int.Parse(Console.ReadLine());
+
+            motorbikes.Add(buyableMotorbikes[index - 1]);
+            buyableMotorbikes.Remove(buyableMotorbikes[index - 1]);
+
+        }
+
+        public void BrowseUsedMotorbikes() // Letar efter motorbikes i buyableMotorbikes-listan vars isUsed bool är true.
+        {
+            Console.WriteLine("Buyable cars:");
+            Motorbike[] subset = buyableMotorbikes.
+                Where(buyableMotorbikes => buyableMotorbikes.IsUsed == true)
+                .ToArray();
+
+            for (int i = 1; i < subset.Length; i++)
+            {
+                Console.WriteLine("{0}. {1}", i, buyableMotorbikes[i - 1].VehicleInfo());
+            }
+
+            Console.WriteLine("Choice: ");
+            int index = int.Parse(Console.ReadLine());
+
+            motorbikes.Add(buyableMotorbikes[index - 1]);
+            buyableMotorbikes.Remove(buyableMotorbikes[index - 1]);
+
+        }
+        #endregion
+
+        #region Selling mechanic
+        public void SellingOptions()
+        {
+            bool isChoice = true;
+
+            while(isChoice)
+            {
+                Menu.SellVehicles();
+                var input = Console.ReadKey(true).Key;
+                
+                switch(input)
+                {
+                    case ConsoleKey.D1:
+                    case ConsoleKey.NumPad1:
+                        SellCars();
+                        isChoice = false;
+                        break;
+                    case ConsoleKey.D2:
+                    case ConsoleKey.NumPad2:
+                        SellMotorbikes();
+                        isChoice = false;
+                        break;
+                    case ConsoleKey.D3:
+                    case ConsoleKey.NumPad3:
+                        SellUsedCars();
+                        isChoice = false;
+                        break;
+                    case ConsoleKey.D4:
+                    case ConsoleKey.NumPad4:
+                        SellUsedMotorbikes();
+                        isChoice = false;
+                        break;
+                    case ConsoleKey.D5:
+                    case ConsoleKey.NumPad5:
+                        isChoice = false;
+                        break;
+
+                }
+            }
+        }
+
+        internal void SellCars()
+        {
+            Console.WriteLine("Sellable cars in store:");
+            for (int i = 1; i < cars.Count; i++)
+            {
+                Console.WriteLine("{0}. {1}", i, cars[i - 1].VehicleInfo());
+            }
+
+            Console.WriteLine("Car to sell: ");
+            int index = int.Parse(Console.ReadLine());
+
+            buyableCars.Add(cars[index - 1]);
+            cars.Remove(cars[index - 1]);
+        }
+
+        internal void SellMotorbikes()
+        {
+            Console.WriteLine("Sellable motorbikes in store:");
+            for (int i = 1; i < motorbikes.Count; i++)
+            {
+                Console.WriteLine("{0}. {1}", i, motorbikes[i - 1].VehicleInfo());
+            }
+
+            Console.WriteLine("Motorbike to sell: ");
+            int index = int.Parse(Console.ReadLine());
+
+            buyableMotorbikes.Add(motorbikes[index - 1]);
+            motorbikes.Remove(motorbikes[index - 1]);
+        }
+
+        internal void SellUsedCars()
+        {
+            Car[] subset = cars    // Filtrerar och hämtar ut cars vars bool IsUsed är true
+                .Where(cars => cars.IsUsed == true)
+                .ToArray();
+
+            Console.WriteLine("Sellable used cars in store:");
+            for (int i = 1; i < subset.Length; i++)
+            {
+                Console.WriteLine("{0}. {1}", i, cars[i - 1].VehicleInfo());
+            }
+
+            Console.WriteLine("Used motorbike to sell: ");
+            int index = int.Parse(Console.ReadLine());
+
+            buyableCars.Add(cars[index - 1]);
+            cars.Remove(cars[index - 1]);
+        }
+
+        internal void SellUsedMotorbikes()
+        {
+            Motorbike[] subset = motorbikes    // Filtrerar och hämtar ut motorbikes vars bool IsUsed är true
+                .Where(motorbikes => motorbikes.IsUsed == true)
+                .ToArray();
+
+            Console.WriteLine("Sellable used motorbikes in store:");
+            for (int i = 1; i < subset.Length; i++)
+            {
+                Console.WriteLine("{0}. {1}", i, motorbikes[i - 1].VehicleInfo());
+            }
+
+            Console.WriteLine("Used motorbike to sell: ");
+            int index = int.Parse(Console.ReadLine());
+
+            buyableMotorbikes.Add(motorbikes[index - 1]);
+            motorbikes.Remove(motorbikes[index - 1]);
         }
         #endregion
     }

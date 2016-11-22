@@ -12,7 +12,7 @@ namespace Labb_4___Bosses_bilar_och_bågar
         public string Model { get; set; }
         public bool IsUsed { get; set; }
 
-        public virtual string VehicleInfo()
+        public virtual string VehicleInfo() // Virtual sträng som kan overridas och som returnerar en hårdkodad "informations-sträng"
         {
             return String.Format("Model: {0}\tManufacturer: {1}\tPrice: {2}\tCondition: {3}",
                 Model,

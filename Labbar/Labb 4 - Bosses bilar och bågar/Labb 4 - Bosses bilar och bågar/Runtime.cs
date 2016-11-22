@@ -11,7 +11,7 @@ namespace Labb_4___Bosses_bilar_och_bågar
         VehicleManager vehicleManager = new VehicleManager();
         public bool isProgramRunning = true;
 
-        public void Start()
+        public void Start() // Loop som tar oss in i en start method
         {
             do
             {
@@ -26,7 +26,7 @@ namespace Labb_4___Bosses_bilar_och_bågar
             Menu.DisplayMainMenu();
             var input = Console.ReadKey(true).Key;
 
-            switch(input)
+            switch(input)   // Switch-sats gjord för att reagera på användarens input
             {
                 case ConsoleKey.D1:
                 case ConsoleKey.NumPad1:
@@ -42,10 +42,14 @@ namespace Labb_4___Bosses_bilar_och_bågar
                     break;
                 case ConsoleKey.D4:
                 case ConsoleKey.NumPad4:
-
+                    vehicleManager.BrowsingOptions();
                     break;
                 case ConsoleKey.D5:
                 case ConsoleKey.NumPad5:
+                    vehicleManager.SellingOptions();
+                    break;
+                case ConsoleKey.D6:
+                case ConsoleKey.NumPad6:
                     isProgramRunning = false;
                     break;
             }

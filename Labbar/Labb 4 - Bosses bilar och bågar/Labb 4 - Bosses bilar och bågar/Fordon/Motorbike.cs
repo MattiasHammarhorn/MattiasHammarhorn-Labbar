@@ -7,7 +7,7 @@ namespace Labb_4___Bosses_bilar_och_bågar
 {
     public class Motorbike : Fordon
     {
-        public override string VehicleInfo()
+        public override string VehicleInfo() // Override string som returnerar den hårdkodade "informations-sträng"
         {
             return String.Format("{0}", base.VehicleInfo());
         }

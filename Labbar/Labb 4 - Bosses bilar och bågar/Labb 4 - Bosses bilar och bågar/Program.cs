@@ -10,7 +10,7 @@ namespace Labb_4___Bosses_bilar_och_bågar
     {
         static void Main(string[] args)
         {
-            Runtime runtime = new Runtime();
+            Runtime runtime = new Runtime(); // Instansierar runtime och startar den i Main
             runtime.Start();
         }
     }
