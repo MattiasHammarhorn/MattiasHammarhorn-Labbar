@@ -8,93 +8,109 @@ namespace Labb_8___Delegater
 {
     class Runtime
     {
-        // Definierar properties
-        public string[] MyArray { get; set; }
-        public float[] Collection { get; set; }
+        Lists lists = new Lists();
+        public delegate string StringConcatinator(string[] MyStrings);
+        public delegate float NumberOperator(float[] MyFloats);
+        public delegate double PriceCalculator(double[] Prices);
 
-        // Konstruktor för arrayerna
-        public Runtime()
+        public string AllStrings(string[] MyStrings)
         {
-            MyArray = new string[]
+            Console.Clear();
+            string tempString = null;
+            int index = 0;
+
+            foreach (string singleString in MyStrings)
             {
-                "String 1",
-                "String 2",
-                "String 3",
-                "String 4",
-                "String 5"
-            };
-
-            Collection = new float[]
-            {
-                5,
-                5,
-                2,
-                5,
-                4
-            };
-        }
-
-        // Deklarer delegaterna som tar in en string och float array
-        // och returnerar en string och en void
-        public delegate string StringConcatinator(string[] MyArray);
-        public delegate void NumberOperator(float[] Collection);
-
-        // Definierar en metod som matchar delegaten
-        public string ConcatinatorMethod(string[] MyArray)
-        {
-            string output = ""; //Definierar stringen output
-
-            foreach (string word in MyArray) // För varje string i arrayen så adderas den med komma-tecken
-            {
-                output += word + ',';
+                index++;                            // Limiter för att se till att if-satsen kan fungera
+                if (index < MyStrings.Length)
+                    tempString += singleString + ", ";  // Lägger in strängen i en temporär string
+                else
+                    tempString += singleString;     // Lägger till den sista strängen utan komma-tecken
             }
-
-            return output;  // Returnerar output
+            return tempString;                      // Returnerar tempvärde
         }
 
-        // Definierar en metod som matchar delegaten men som också returnerar en float
-        public void OperatorMethod(Func<float[], float> calcFunc)
+        public void Calculator(Func<float[], float> calcFunc)
         {
-            float result = calcFunc(Collection); // Tar in 
-
+            Console.Clear();
+            float result = calcFunc(lists.MyFloats); // Skriver ut resultatet
             Console.WriteLine(result);
+            Console.WriteLine("Press a key to continue...");
+            Console.ReadKey(true);
         }
 
         public void Start()
         {
-            // Instansierar string delegaten som tar in delegat metoden.
-            StringConcatinator stringConcatinator = new StringConcatinator(ConcatinatorMethod);
-            Console.WriteLine(stringConcatinator(MyArray)); // Skriver ut output
+            ProductManager productManager = new ProductManager();
+            StringConcatinator allString = AllStrings; // Instansierar delegat
+            StringConcatinator nameFormatter = productManager.FormatProductNames; // Mer instansiering av delegater
+            PriceCalculator priceCalculator = productManager.PriceCalculation;
 
-            // Definierar funcs som tar in en float array och returnerar en float
-            Func<float[], float> myFunc = (Collection) =>
+            string[] productNames = productManager.Products. // Gör array utav varje produktnamn
+                Select(Product => Product.Name)
+                .ToArray();
+            double[] productPrices = productManager.Products.
+                Select(Product => Product.Price)
+                .ToArray();
+
+            Func<float[], float> addFunc = (MyFloats) => // Funcs som returnerar en float
+           {
+               float tempFloat = 0;
+
+               foreach (float singleFloat in MyFloats)
+               {
+                   tempFloat += singleFloat;            // Adderar ihopp varje float till en
+               }
+               return tempFloat;
+           };
+
+            Func<float[], float> multiplyFunc = (MyFloats) =>
             {
-                float Total = 0;
+                float tempFloat = 1;
 
-                for (int i = 0; i < Collection.Length; i++) // För varje position i Collection
-                {                                           // så adderas det in i floaten Total
-                    Total += Collection[i];
+                foreach (float singleFloat in MyFloats)
+                {
+                    tempFloat *= singleFloat;       // Multiplicerar ihopp dem till en float
                 }
-
-                return Total; // Returnerar Total (summan) av de adderade positionerna
+                return tempFloat;
             };
 
-            OperatorMethod(myFunc); // Kallar på metoden med hjälp av funcen
+            bool loop = true;
 
-            // Definierar funcs som tar in en float array och returnerar en float
-            Func<float[], float> myFunc2 = (Collection) =>
+            while (loop)
             {
-                float Total = 1;
+                Console.Clear();
+                UI.PrintMainMenu();
+                ConsoleKey input = Console.ReadKey(true).Key;
 
-                for (int i = 0; i < Collection.Length; i++) // Förvarje position i Collection
-                {                                           // så multipliceras det in i Total
-                    Total *= Collection[i];
+                switch (input)
+                {
+                    case ConsoleKey.D1: case ConsoleKey.NumPad1:
+                        Console.WriteLine(allString(lists.MyStrings));
+                        Console.WriteLine("Press a key to continue...");
+                        Console.ReadKey(true);
+                        break;
+                    case ConsoleKey.D2: case ConsoleKey.NumPad2:
+                        Calculator(addFunc); // Åkallar metoden som tar in func
+                        break;
+                    case ConsoleKey.D3: case ConsoleKey.NumPad3:
+                        Calculator(multiplyFunc);
+                        break;
+                    case ConsoleKey.D4: case ConsoleKey.NumPad4:
+                        Console.WriteLine(nameFormatter(productNames));
+                        Console.WriteLine("Press a key to continue...");
+                        Console.ReadKey(true);
+                        break;
+                    case ConsoleKey.D5: case ConsoleKey.NumPad5:
+                        Console.WriteLine(priceCalculator(productPrices));
+                        Console.WriteLine("Press a key to continue...");
+                        Console.ReadKey(true);
+                        break;
+                    case ConsoleKey.D6: case ConsoleKey.NumPad6:
+                        loop = false;
+                        break;
                 }
-
-                return Total; // Returnerar Total (summan) av de multiplicerade positonerna
-            };
-
-            OperatorMethod(myFunc2); // Kallar på metoden med hjälp av funcen
+            }
         }
     }
 }

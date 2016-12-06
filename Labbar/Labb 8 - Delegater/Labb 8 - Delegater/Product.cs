@@ -6,12 +6,10 @@ using System.Threading.Tasks;
 
 namespace Labb_8___Delegater
 {
-    class Program
+    class Product
     {
-        static void Main(string[] args)
-        {
-            var runtime = new Runtime();
-            runtime.Start();
-        }
+        public string Name { get; set; }
+        public int Id { get; set; }
+        public double Price { get; set; }
     }
 }
