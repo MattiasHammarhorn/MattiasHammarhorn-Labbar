@@ -1,9 +1,9 @@
-﻿using Labb_5___My_repository.Controllers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Labb_5___My_repository.Controller;
 
 namespace Labb_5___My_repository
 {
@@ -11,53 +11,85 @@ namespace Labb_5___My_repository
     {
         public void Start()
         {
-            //Nya instanser av controllers
-            var dvds = new DvdController();
-            var manga = new MangaController();
-            var loop = true;
+            bool isRunning = true;
 
-            while (loop)
+            while (isRunning)                                       // Run while the bool 'isRunning' is still true
             {
                 UI.PrintMainMenu();
-                var input = Console.ReadKey(true).Key;
+                ConsoleKey menuChoice = Console.ReadKey(true).Key;
 
-                switch (input) //Switch för varje val
+                switch (menuChoice)
                 {
                     case ConsoleKey.D1:
-                    case ConsoleKey.NumPad1:
-                        dvds.CreateDvd();
+                        FilmMenu();
                         break;
                     case ConsoleKey.D2:
-                    case ConsoleKey.NumPad2:
-                        manga.CreateManga();
+                        GameMenu();
                         break;
                     case ConsoleKey.D3:
-                    case ConsoleKey.NumPad3:
-                        dvds.RemoveDvd();
+                        isRunning = false;
+                        break;
+                }
+            }
+        }
+
+        public void FilmMenu()
+        {
+            FilmsController films = new FilmsController();
+            bool isFilmMenuRunning = true;
+
+            while (isFilmMenuRunning)
+            {
+                UI.PrintFilmMenu();
+                ConsoleKey filmChoice = Console.ReadKey(true).Key;
+
+                switch (filmChoice)
+                {
+                    case ConsoleKey.D1:
+                        films.CreateFilm();
+                        break;
+                    case ConsoleKey.D2:
+                        films.RemoveFilm();
+                        break;
+                    case ConsoleKey.D3:
+                        films.PrintFilmList();
                         break;
                     case ConsoleKey.D4:
-                    case ConsoleKey.NumPad4:
-                        manga.RemoveManga();
+                        films.EditFilm();
                         break;
                     case ConsoleKey.D5:
-                    case ConsoleKey.NumPad5:
-                        dvds.PrintDvdList();
+                        isFilmMenuRunning = false;
                         break;
-                    case ConsoleKey.D6:
-                    case ConsoleKey.NumPad6:
-                        manga.PrintMangaList();
+                }
+            }
+        }
+
+        public void GameMenu()
+        {
+            GamesController games = new GamesController();
+            bool isGameMenuRunning = true;
+
+            while (isGameMenuRunning)
+            {
+                UI.PrintGameMenu();
+                ConsoleKey gameChoice = Console.ReadKey(true).Key;
+
+                switch (gameChoice)
+                {
+                    case ConsoleKey.D1:
+                        games.CreateGame();
                         break;
-                    case ConsoleKey.D7:
-                    case ConsoleKey.NumPad7:
-                        dvds.EditDvd();
+                    case ConsoleKey.D2:
+                        games.RemoveGame();
                         break;
-                    case ConsoleKey.D8:
-                    case ConsoleKey.NumPad8:
-                        manga.EditManga();
+                    case ConsoleKey.D3:
+                        games.PrintGameList();
                         break;
-                    case ConsoleKey.D9:
-                    case ConsoleKey.NumPad9:
-                        loop = false;
+                    case ConsoleKey.D4:
+                        games.EditGame();
+                        break;
+                    case ConsoleKey.D5:
+                        isGameMenuRunning = false;
                         break;
                 }
             }

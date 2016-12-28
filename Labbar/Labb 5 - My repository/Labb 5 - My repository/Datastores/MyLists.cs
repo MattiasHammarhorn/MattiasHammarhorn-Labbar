@@ -1,36 +1,36 @@
-﻿using Labb_5___My_repository.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Labb_5___My_repository.Models;
 
-namespace Labb_5___My_repository.Datastores
+namespace Labb_5___My_repository.DataStores
 {
     class MyLists
     {
-        private static List<Dvd> dvds;
-        private static List<Manga> manga;
+        private static List<Film> films;        // Private properties
+        private static List<Game> games;
 
-        public static List<Dvd> Dvds
+        public static List<Film> Films
         {
             get
             {
-                if (dvds == null)
-                    dvds = new List<Dvd>();
+                if (films == null)              // If there are no games in the list
+                    films = new List<Film>();   // Create a new list
 
-                return dvds;
+                return films;                   // And return it to the private list
             }
         }
 
-        public static List<Manga> Manga
+        public static List<Game> Games
         {
             get
             {
-                if (manga == null)
-                    manga = new List<Manga>();
+                if (games == null)
+                    games = new List<Game>();
 
-                return manga;
+                return games;
             }
         }
     }

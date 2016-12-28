@@ -1,20 +1,20 @@
-﻿using Labb_5___My_repository.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Labb_5___My_repository.Models;
 
-namespace Labb_5___My_repository.Datastores.Repositories
+namespace Labb_5___My_repository.DataStores.Repositories
 {
     interface IRepository
     {
-        Dvd[] GetDvds();
-        void AddDvd(Dvd newDvd);
-        void RemoveDvd(Dvd Dvd);
+        Film[] GetFilms();          // Interface will have an array of films
+        void AddFilm(Film newFilm); // A method for adding films that takes in a film 'newFilm'
+        void RemoveFilm(Film film); // A methodfor removing films that takes in a 'film'
 
-        Manga[] GetManga();
-        void AddManga(Manga newManga);
-        void RemoveManga(Manga Manga);
+        Game[] GetGames();
+        void AddGame(Game newGame);
+        void RemoveGame(Game game);
     }
 }

@@ -10,8 +10,7 @@ namespace Labb_5___My_repository
     {
         static void Main(string[] args)
         {
-            //Instansierar klienten
-            var client = new Client();
+            Client client = new Client();
             client.Start();
         }
     }

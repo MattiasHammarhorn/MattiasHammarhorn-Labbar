@@ -1,42 +1,46 @@
-﻿using Labb_5___My_repository.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Labb_5___My_repository.Models;
 
-namespace Labb_5___My_repository.Datastores.Repositories
+namespace Labb_5___My_repository.DataStores.Repositories
 {
     class ListRepository : IRepository
     {
-        public Dvd[] GetDvds()
+        #region Film methods
+        public Film[] GetFilms()            // Public film array
         {
-            return MyLists.Dvds.ToArray();
+            return MyLists.Films.ToArray(); // Returns all films from MyLists.Films to the array
         }
 
-        public Manga[] GetManga()
+        public void AddFilm(Film newFilm)   // A method inherited from IRepository
         {
-            return MyLists.Manga.ToArray();
+            MyLists.Films.Add(newFilm);     // Adds newFilm to MyLists.Films
         }
 
-        public void AddDvd(Dvd newDvd)
+        public void RemoveFilm(Film film)   // A method inheried from IRepository
         {
-            MyLists.Dvds.Add(newDvd);
+            MyLists.Films.Remove(film);     // Removes selected film from MyLists.Films
+        }
+        #endregion
+
+        #region Game methods
+        public Game[] GetGames()
+        {
+            return MyLists.Games.ToArray();
         }
 
-        public void AddManga(Manga newManga)
+        public void AddGame(Game newGame)
         {
-            MyLists.Manga.Add(newManga);
+            MyLists.Games.Add(newGame);
         }
 
-        public void RemoveDvd(Dvd dvd)
+        public void RemoveGame(Game game)
         {
-            MyLists.Dvds.Remove(dvd);
+            MyLists.Games.Remove(game);
         }
-
-        public void RemoveManga(Manga manga)
-        {
-            MyLists.Manga.Remove(manga);
-        }
+        #endregion
     }
 }
